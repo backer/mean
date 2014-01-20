@@ -22,13 +22,14 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
         selectWithCheckboxOnly: true,
         displaySelectionCheckbox: true,
         columnDefs: [
+            {field:'_id', displayName:'id', enableCellEdit: false,width: "25%", pinned: true },
             {field:'ver', displayName:'v', enableCellEdit: false,width: "*", pinned: true },
             {field:'updated', displayName:'u', enableCellEdit: false,width: "*", pinned: true },
             {field:'created', displayName:'c', enableCellEdit: false,width: "*", pinned: true },
             {field:'updatedBy', displayName:'ub', enableCellEdit: false,width: "*", pinned: true },
             {field:'createdBy', displayName:'cb', enableCellEdit: false,width: "*", pinned: true },
             {field:'user.name', displayName:'user', enableCellEdit: false,width: "*", pinned: true },
-            {field:'category', displayName:'Category', enableCellEdit: true,width: "*", pinned: false },
+            {field:'category', displayName:'Category', enableCellEdit: true,width: "*", pinned: false , cellTemplate: cellClassTemplate},
             {field:'title', displayName:'Project', enableCellEdit: true, width: "*", pinned: false, cellTemplate: cellClassTemplate},
             {field:'asset', displayName:'Asset', enableCellEdit: true, width: "*", pinned: false }
         ]
@@ -103,11 +104,23 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
 
     $scope.find = function() {
         Projects.query(function(projects) {
-            $scope.projects = projects;
+            $scope.projects = null;
 
 
         });
     };
+
+
+    $scope.findActuals = function() {
+        Projects.query({},function(projects) {
+            $scope.projects = projects;
+        });
+    };
+//    $scope.findActuals = function() {
+//        Projects.query({ parent: { $exists: false}},function(projects) {
+//            $scope.projects = projects;
+//        });
+//    };
 
     $scope.findOne = function() {
         Projects.get({

@@ -2865,7 +2865,7 @@ ngGridDirectives.directive('ngCellHasFocus', ['$domUtilityService',
             domUtilityService.digest($scope);
 
             $scope.$broadcast('ngGridEventStartCellEdit');
-            //to fix the on start event propagation on suggestion from
+            //to fix the on start event propagation on suggestion from https://groups.google.com/forum/#!msg/angular/2Vdvrm_BL6Q/SRJ43O3gv0kJ
             $scope.$emit('ngGridEventStartCellEdit');
 
             $scope.$on('ngGridEventEndCellEdit', function() {

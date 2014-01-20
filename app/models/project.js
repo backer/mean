@@ -1,10 +1,20 @@
 'use strict';
 
+
 /**
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+
+var tree = require("mongoose-path-tree");
+
+//mongoose-tree-path
+//Model.plugin(tree, {
+//    pathSeparator : '#', // Default path separator
+//    onDelete :  'REPARENT' // Can be set to 'DELETE' or 'REPARENT'. Default: 'REPARENT'
+//});
+
 
 
 /**
@@ -73,10 +83,7 @@ var ProjectSchema = new Schema({
         trim: true
     },
     ver: {
-        type: Number,
-        default: 1,
-        min: 1,
-        unique: true
+        type: Number
     },
     createdBy: {
         type: Schema.ObjectId,
@@ -87,6 +94,8 @@ var ProjectSchema = new Schema({
         ref: 'User'
     }
 },{});
+
+ProjectSchema.plugin(tree);
 
 /**
  * Validations
