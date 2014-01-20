@@ -47,6 +47,9 @@ exports.update = function(req, res) {
 
     project = _.extend(project, req.body);
 
+    //TODO:need to lock/check the version before save
+    project.ver ++;
+
     project.save(function(err) {
         if (err) {
             return res.send('users/signup', {

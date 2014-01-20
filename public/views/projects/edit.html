@@ -2,17 +2,22 @@
 	<form class="form-horizontal" data-ng-submit="update()">
 		<div class="control-group">
 			<label class="control-label" for="title">Title</label>
-
 			<div class="controls">
 				<input type="text" data-ng-model="project.title" id="title" placeholder="Title" required>
 				</input>
 			</div>
 		</div>
+        <div class="control-group">
+            <label class="control-label" for="category">Category</label>
+            <div class="controls">
+                <input type="text" data-ng-model="project.category" id="category" placeholder="Category" required>
+                </input>
+            </div>
+        </div>
 		<div class="control-group">
-			<label class="control-label" for="content">Content</label>
-
+			<label class="control-label" for="description">Description</label>
 			<div class="controls">
-				<textarea data-ng-model="project.content" id="content" cols="30" rows="10" placeholder="Content">
+				<textarea data-ng-model="project.description" id="description" cols="30" rows="10" placeholder="Description">
 				</textarea>
 			</div>
 		</div>

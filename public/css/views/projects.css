@@ -5,3 +5,10 @@ h1 {
 ul.articles li:not(:last-child) {
     border-bottom:1px solid #ccc
 }
+
+
+.gridStyle {
+    border: 0px solid rgb(212,212,212);
+    /*width: 400px;*/
+    height: 900px
+}

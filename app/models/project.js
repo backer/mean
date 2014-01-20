@@ -8,9 +8,61 @@ var mongoose = require('mongoose'),
 
 
 /**
- * Article Schema
+ * Project Schema
  */
 var ProjectSchema = new Schema({
+    category:{
+        type: String,
+        default: '',
+        trim: true
+    },
+//    businessArea:{
+//        type: String,
+//        default: '',
+//        trim: true
+//    },
+//    businessPriority:{
+//        type: String,
+//        default: '',
+//        trim: true
+//    },
+//    businessMoM:{
+//        type: String,
+//        default: '',
+//        trim: true
+//    },
+    description:{
+        type: String,
+        default: '',
+        trim: true
+    },
+//    asset:{
+//        type: String,
+//        default: '',
+//        trim: true
+//    },
+//    businessAnalysis:{
+//        status: {
+//            type: String,
+//            default: '',
+//            trim: true
+//        },
+//        baselineDue: {
+//            type: Date
+//        },
+//        forcastDue: {
+//            type: Date
+//        }
+//
+//    },
+    updated: {
+        type: Date,
+        default: Date.now
+    },
+    updatedBy: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
     created: {
         type: Date,
         default: Date.now
@@ -20,16 +72,21 @@ var ProjectSchema = new Schema({
         default: '',
         trim: true
     },
-    content: {
-        type: String,
-        default: '',
-        trim: true
+    ver: {
+        type: Number,
+        default: 1,
+        min: 1,
+        unique: true
+    },
+    createdBy: {
+        type: Schema.ObjectId,
+        ref: 'User'
     },
     user: {
         type: Schema.ObjectId,
         ref: 'User'
     }
-});
+},{});
 
 /**
  * Validations

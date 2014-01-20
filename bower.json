@@ -8,7 +8,8 @@
         "angular-mocks": "latest",
         "angular-route": "latest",
         "bootstrap": "2.3.2",
-        "angular-bootstrap": "0.7.0",
-        "angular-ui-utils": "0.0.4"
+        "angular-bootstrap": "latest",
+        "angular-ui-utils": "latest",
+        "angular-grid": "latest"
     }
 }

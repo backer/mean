@@ -2,6 +2,7 @@
     <span>{{project.created | date:'medium'}}</span>/
     <span>{{project.user.name}}</span>
     <h2>{{project.title}}</h2>
+    version:<span>{{project.ver}}</span>
     <div data-ng-show="global.user._id == project.user._id">
         <a class="btn" href="/#!/projects/{{project._id}}/edit">
         	<i class="icon-edit"></i>
