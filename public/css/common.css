@@ -4,7 +4,11 @@
 }
 
 .content {
-    margin-top:50px;
+    margin-top:40px;
+    width:100%
+}
+
+.container {
     width:100%
 }
 

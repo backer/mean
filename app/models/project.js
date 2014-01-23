@@ -16,31 +16,44 @@ var ProjectSchema = new Schema({
         default: '',
         trim: true
     },
-//    businessArea:{
-//        type: String,
-//        default: '',
-//        trim: true
-//    },
-//    businessPriority:{
-//        type: String,
-//        default: '',
-//        trim: true
-//    },
-//    businessMoM:{
-//        type: String,
-//        default: '',
-//        trim: true
-//    },
+    businessArea:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    businessPriority:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    businessMoM:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    releaseDate:{
+        type: Date
+    },
+    releaseName:{
+        type: String,
+        default: '',
+        trim: true
+    },
     description:{
         type: String,
         default: '',
         trim: true
     },
-//    asset:{
-//        type: String,
-//        default: '',
-//        trim: true
-//    },
+    asset:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    group:{
+        type: String,
+        default: '',
+        trim: true
+    },
 //    businessAnalysis:{
 //        status: {
 //            type: String,
@@ -55,14 +68,6 @@ var ProjectSchema = new Schema({
 //        }
 //
 //    },
-    updated: {
-        type: Date,
-        default: Date.now
-    },
-    updatedBy: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
     created: {
         type: Date,
         default: Date.now
@@ -76,11 +81,16 @@ var ProjectSchema = new Schema({
         type: Number,
         default: 1,
         min: 1,
-        unique: true
+        index:true
     },
-    createdBy: {
-        type: Schema.ObjectId,
-        ref: 'User'
+    latest: {
+        type: Boolean,
+        default: false,
+        index:true
+    },
+    projectId: {
+        type: String,
+        index:true
     },
     user: {
         type: Schema.ObjectId,

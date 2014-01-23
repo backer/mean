@@ -8,7 +8,14 @@ ul.articles li:not(:last-child) {
 
 
 .gridStyle {
-    border: 0px solid rgb(212,212,212);
+    border: 1px solid rgb(212,212,212);
     /*width: 400px;*/
-    height: 900px
+    height: 400px
+}
+.cellToolTip {
+    overflow: visible;
+}
+
+.tooltip {
+    top: 0 !important;
 }
