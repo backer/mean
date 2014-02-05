@@ -10,6 +10,7 @@
         "bootstrap": "2.3.2",
         "angular-bootstrap": "latest",
         "angular-ui-utils": "latest",
-        "angular-grid": "latest"
+        "angular-grid": "latest",
+        "angular-ui-date": "latest"
     }
 }

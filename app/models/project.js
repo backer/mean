@@ -31,13 +31,15 @@ var ProjectSchema = new Schema({
         default: '',
         trim: true
     },
-    releaseDate:{
-        type: Date
-    },
-    releaseName:{
-        type: String,
-        default: '',
-        trim: true
+    release: {
+        date:{
+            type: Date
+        },
+        name:{
+            type: String,
+            default: '',
+            trim: true
+        }
     },
     description:{
         type: String,
@@ -53,6 +55,84 @@ var ProjectSchema = new Schema({
         type: String,
         default: '',
         trim: true
+    },
+    clarityCode:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    projectSponsor:{
+        type: String,
+        default: '',
+        trim: true
+    },
+    keyStakeholders:{
+        type: Array,
+        default: '',
+        trim: true
+    },
+    leadRoles:{
+        projectManager:{
+            type: String,
+            default: '',
+            trim: true
+        },
+        businessAnalyst:{
+            type: String,
+            default: '',
+            trim: true
+        },
+        functionalAnalyst:{
+            type: String,
+            default: '',
+            trim: true
+        },
+        devLead:{
+            type: String,
+            default: '',
+            trim: true
+        }
+    },
+    evaluation:{
+        confidence:{
+            type:String,
+            default: '',
+            trim: true
+        },
+        complexity:{
+            type:String,
+            default: '',
+            trim: true
+        },
+        priority:{
+            type:String,
+            default: '',
+            trim: true
+        }
+    },
+
+//    apps:{
+//        itrac:{
+//            calculatedRAG:{type:String, defauls:'',trim:true}
+//
+//            }
+//    },
+    jira :{
+        credit:{
+            type:String,
+            default: '',
+            trim: true
+        },
+        itrac:{
+            type:String,
+            default: '',
+            trim: true
+        },
+        tpm:{
+            type:String,
+            default: '',
+            trim: true
+        }
     },
 //    businessAnalysis:{
 //        status: {

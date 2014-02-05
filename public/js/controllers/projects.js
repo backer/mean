@@ -7,15 +7,20 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
     $scope.groups = ['TPM','Credit','iTrac','Connectors'];
     $scope.priorities = ['Critcal','High','Medium','Low','Undefined'];
 
-    var linkCellTemplate = '<div class="ngCellText" ng-class="col.colIndex()"><span ng-cell-text><a href=/#!/projects/{{row.getProperty(col.field)}}><i class="icon-info-sign"></i></a></span></div>';
+    $scope.linkCellTemplate = '<div class="ngCellText" ng-class="col.colIndex()"><span ng-cell-text><a href=/#!/projects/{{row.getProperty(col.field)}}><i class="icon-info-sign"></i></a></span></div>';
     $scope.cellStatusTemplate = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-change="updateEntity(row)"><option ng-repeat="st in statuses">{{st}}</option></select>';
     $scope.cellGroupTemplate = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-change="updateEntity(row)"><option ng-repeat="st in groups">{{st}}</option></select>';
     $scope.cellPriorityTemplate = '<select ng-class="\'colt\' + col.index" ng-input="COL_FIELD" ng-model="COL_FIELD" ng-change="updateEntity(row)"><option ng-repeat="st in priorities">{{st}}</option></select>';
+    $scope.cellEditDateTemplate = '<input ng-class="\'colt\' + col.index"  ui-date ui-date-format ng-model="COL_FIELD" >';
+    $scope.cellDateTemplate = '<div  ng-class="\'colt\' + col.index" ng-model="COL_FIELD" >';
+
+//    $scope.cellDateTemplate = '<input ui-date="{ dateFormat: \'dd mm yyyy\' }" ui-date-format="dd mm yyyy"  ng-model="COL_FIELD" ng-change="updateEntity(row)">';
 //    $scope.rowTemplate='<div id={{row.getProperty("_id")}} ng-style="{ cursor: row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell {{col.cellClass}}"><div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }">&nbsp;</div><div ng-cell></div></div>';
 //    $scope.rowTemplate='<div id={{row.getProperty("_id")}} ng-style="{ cursor: row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell {{col.cellClass}}"><div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }">&nbsp;</div><div ng-cell></div></div>';
 
 //    $scope.selectedProjects = [];
     $scope.gridOptions = {
+        plugins: [new ngGridFlexibleHeightPlugin(),new ngGridCsvExportPlugin(), new ngGridReorderable()],
         data: 'projects',
         showGroupPanel: true,
         jqueryUIDraggable: true,
@@ -23,25 +28,23 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
         enableCellEdit: true,
 //        enablePinning: false,
         enableColumnResize: true,
-//        enableRowReordering:true,
-        enableRowSelection:true,
+        enableRowReordering:false,
+        enableRowSelection:false,
 //        enableColumnReordering:true,
         multiSelect: false,
-//        showFilter:true,
+        showFooter: true,
+        showColumnMenu:true,
+        //keepLastSelected: true,
+        enableCellEditOnFocus: true,
+        enableSorting: true,
+        showFilter:true,
 //        canSelectRows: false,
-//        showFooter: true,
+
 //        selectedItems: $scope.selectedProjects,
 //        rowTemplate: $scope.rowTemplate,
 
         columnDefs: [
-//            {field:'_id', displayName:'id', enableCellEdit: false,width: "25%" },
-//            {field:'projectId', displayName:'pid', enableCellEdit: false},
-//            {field:'ver', displayName: "v"},
-//            {field:'latest', displayName:'l'},
-//            {field:'created', displayName:'c', enableCellEdit: false},
-//            {field:'user.name', displayName:'user', enableCellEdit: false},
-
-            {field:'_id', displayName:'', enableCellEdit: false, width:"26px",cellTemplate: linkCellTemplate},
+            {field:'_id', displayName:'', enableCellEdit: false, width:"26px",cellTemplate: $scope.linkCellTemplate},
             {field:'category', displayName:'Category', width:"10%", enableCellEdit: true},
             {field:'title', displayName:'Project', width:"10%", enableCellEdit: true},
             {field:'asset', displayName:'Asset', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true,  editableCellTemplate: $scope.cellStatusTemplate},
@@ -49,8 +52,8 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
             {field:'businessArea', displayName:'businessArea', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true} ,
             {field:'businessPriority', displayName:'businessPriority', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true,  editableCellTemplate: $scope.cellPriorityTemplate},
             {field:'businessMoM', displayName:'businessMoM', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true},
-            {field:'releaseDate', displayName:'releaseDate', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true},
-            {field:'releaseName', displayName:'releaseName', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true}
+            {field:'release.date', displayName:'releaseDate', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true, cellFilter:'date:\'dd MMM, yyyy\'', editableCellTemplate:$scope.cellEditDateTemplate},
+            {field:'release.name', displayName:'releaseName', width:"10%", enableCellEdit: true, enableCellEditOnFocus: true}
         ]
     }
 
@@ -73,7 +76,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
 
             project.$update(function() {
                 //$location.path('projects/' + project._id);
-                console.log(project._id);
+                console.log("project id:"+project._id);
             });
         }
     });
