@@ -7,6 +7,9 @@ angular.module('mean').config(['$routeProvider',
             when('/projects', {
                 templateUrl: 'views/projects/list.html'
             }).
+            when('/projects-metro', {
+                templateUrl: 'views/projects/metroView.html'
+            }).
             when('/projects/create', {
                 templateUrl: 'views/projects/create.html'
             }).

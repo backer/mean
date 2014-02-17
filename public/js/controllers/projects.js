@@ -142,4 +142,19 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
             $scope.project = project;
         });
     };
+
+
+    $scope.showProject = function(projectId) {
+        //$scope.message = "I AM A TEST MESSAGE"+projectId;
+//        $http.get('test.json').success(function(data) {
+//            $scope.message = data.msg;
+//        });
+
+        Projects.get({
+            projectId:projectId
+        }, function(project) {
+            $scope.project = project;
+
+        });
+    }
 }]);

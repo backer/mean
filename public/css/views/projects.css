@@ -19,3 +19,23 @@ ul.articles li:not(:last-child) {
 .tooltip {
     top: 0 !important;
 }
+
+body {
+    padding-top: 10px;
+}
+.pre-scrollable1 {
+    height: 700px;
+    overflow-x: visible;
+    overflow-y: scroll;
+}
+
+
+body { background-color:black; margin:0px; padding:0px; }
+.pageBox { position:absolute; top:20px; left:20px; right:20px; bottom:20px; min-width:200px}
+.headerBox { position:absolute; width:100%; height:50px; background-color:#333; }
+.contentBox { position:absolute; width:100%; top:52px; bottom:32px; background-color:blue; }
+.footerBox { position:absolute; width:100%; height:30px; background-color:#ccc; bottom:0px; }
+.contentBoxLeft { position:absolute; width:20%; height:100%; background-color:#b6b6b6; }
+.contentBoxRight { position:absolute; width:80%; left:20%; height:100%; background-color:white; }
+.contentBoxLeft,
+.contentBoxRight { overflow:auto; overflow-x:hidden; }

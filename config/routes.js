@@ -78,6 +78,7 @@ module.exports = function(app, passport, auth) {
     // Project Routes
     var projects = require('../app/controllers/projects');
     app.get('/projects', projects.latest);
+    app.get('/projects-metro', projects.latest);
     app.post('/projects', auth.requiresLogin, projects.create);
     app.get('/projects/:projectId', projects.show);
     app.put('/projects/:projectId', auth.requiresLogin, auth.project.hasAuthorization, projects.update);

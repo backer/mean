@@ -9,6 +9,10 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             'link': 'projects'
         },
         {
+            'title': 'Projects Metro',
+            'link': 'projects-metro'
+        },
+        {
             'title': 'Create Project',
             'link': 'projects/create'
         },
